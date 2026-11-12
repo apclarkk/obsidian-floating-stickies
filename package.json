@@ -1,0 +1,17 @@
+{
+  "name": "obsidian-floating-stickies",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Always-on-top sticky windows for Obsidian notes, base views, and today's daily note.",
+  "scripts": {
+    "dev": "node esbuild.config.mjs --watch",
+    "build": "tsc --noEmit && node esbuild.config.mjs",
+    "install-plugin": "npm run build && node scripts/install.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "esbuild": "^0.24.0",
+    "obsidian": "1.14.4",
+    "typescript": "^5.6.0"
+  }
+}

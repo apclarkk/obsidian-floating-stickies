@@ -1,0 +1,9 @@
+{
+  "id": "floating-stickies",
+  "name": "Floating Stickies",
+  "version": "0.1.0",
+  "minAppVersion": "1.10.0",
+  "description": "Always-on-top sticky windows for notes, base views, and today's daily note.",
+  "author": "clark",
+  "isDesktopOnly": true
+}

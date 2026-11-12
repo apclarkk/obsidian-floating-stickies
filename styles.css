@@ -1,0 +1,112 @@
+/* Floating Stickies: only adds the pin and roll-up buttons to a sticky's tab bar.
+   Everything else is your theme, untouched. */
+
+.fs-window-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--size-2-1);
+  padding: 0 var(--size-4-1);
+  -webkit-app-region: no-drag;
+}
+
+.fs-window-controls .clickable-icon.is-active {
+  color: var(--interactive-accent);
+}
+
+/* Properties popover */
+.fs-props-popover {
+  position: absolute;
+  z-index: var(--layer-popover);
+  width: min(300px, calc(100vw - 16px));
+  max-height: calc(100vh - 80px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: var(--size-4-2) var(--size-4-3) var(--size-4-1);
+  background-color: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-s);
+  font-size: var(--font-ui-small);
+}
+.fs-props-head {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: var(--size-4-2);
+  padding-bottom: var(--size-4-1);
+}
+.fs-props-status {
+  color: var(--text-faint);
+  font-size: var(--font-ui-smaller);
+  flex-shrink: 0;
+}
+.fs-props-status.is-saved {
+  color: var(--text-accent);
+}
+.fs-props-row {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  gap: var(--size-4-2);
+  align-items: center;
+  padding: var(--size-4-2) 0;
+  border-top: 1px solid var(--background-modifier-border);
+}
+.fs-props-key {
+  display: flex;
+  align-items: center;
+  gap: var(--size-2-2);
+  color: var(--text-muted);
+  overflow: hidden;
+  white-space: nowrap;
+}
+.fs-props-icon {
+  display: flex;
+  --icon-size: var(--icon-xs);
+}
+.fs-props-value {
+  min-width: 0;
+}
+.fs-props-value input[type="text"] {
+  min-width: 0;
+  text-overflow: ellipsis;
+  width: 100%;
+  height: var(--input-height);
+  font-size: var(--font-ui-small);
+}
+.fs-props-readonly,
+.fs-props-empty {
+  color: var(--text-faint);
+}
+/* Long values such as URLs stay on one line and end in an ellipsis; hover shows the full text. */
+.fs-props-readonly {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.fs-props-chips {
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-2-2);
+}
+.fs-props-chip {
+  height: auto;
+  padding: 2px var(--size-4-2);
+  border-radius: var(--radius-l);
+  font-size: var(--font-ui-smaller);
+  color: var(--text-muted);
+  background-color: transparent;
+  border: 1px solid var(--background-modifier-border);
+  box-shadow: none;
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.fs-props-chip.is-active {
+  color: var(--text-accent);
+  border-color: var(--interactive-accent);
+  background-color: hsla(var(--interactive-accent-hsl), 0.12);
+}

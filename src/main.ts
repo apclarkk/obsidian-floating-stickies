@@ -332,6 +332,10 @@ export default class FloatingStickies extends Plugin {
     let box = bar.querySelector<HTMLElement>(":scope > .fs-window-controls");
     if (!box) {
       box = bar.createDiv("fs-window-controls");
+      const main = box.createDiv({ cls: "clickable-icon fs-main" });
+      setIcon(main, "app-window");
+      setTooltip(main, "Show main Obsidian window");
+      main.addEventListener("click", () => this.showMainWindow());
       const props = box.createDiv({ cls: "clickable-icon fs-props" });
       setIcon(props, "sliders-horizontal");
       setTooltip(props, "Properties");
@@ -349,6 +353,17 @@ export default class FloatingStickies extends Plugin {
     setTooltip(pin, rec.onTop ? "Floating above other windows (click to stop)" : "Float above other windows");
     setIcon(roll, rec.collapsed ? "chevrons-up-down" : "chevrons-down-up");
     setTooltip(roll, rec.collapsed ? "Unroll" : "Roll up");
+  }
+
+  /** Restores the main vault window if it is minimized or hidden and brings it to the front. */
+  async showMainWindow() {
+    const remote = getRemote();
+    const bw = remote?.getCurrentWindow?.() ?? (await findBrowserWindow(window));
+    if (!bw) return void new Notice("Floating Stickies: couldn't find the main window.");
+    if (bw.isMinimized()) bw.restore();
+    if (!bw.isVisible()) bw.show();
+    remote?.app?.focus?.({ steal: true });
+    bw.focus();
   }
 
   // ---------- global shortcut ----------
